@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 const path = require('path');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 4000;
 
 // Replace these with your email credentials
 const EMAIL_USER = 'mariamshah0514@gmail.com';
@@ -58,3 +58,4 @@ app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
     console.log('Open http://localhost:3000/nexus_motors_simulation.html in your browser.');
 });
+
