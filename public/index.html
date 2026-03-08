@@ -2612,14 +2612,26 @@
         document.addEventListener('DOMContentLoaded', function() {
             showInvestmentOptions();
             updateAllCharts();
-            const btn = document.getElementById('startButton');
-            if (btn) {
-                btn.addEventListener('click', () => {
-                    console.log('startButton clicked');
-                    startSimulation();
-                });
+            function attachStartButton() {
+                const btn = document.getElementById('startButton');
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        console.log('startButton clicked');
+                        try {
+                            startSimulation();
+                        } catch (e) {
+                            alert('An error occurred while starting the simulation. Please reload the page and try again.');
+                            console.error('Start Simulation error:', e);
+                        }
+                    });
+                } else {
+                    // Retry in case DOM is not ready
+                    setTimeout(attachStartButton, 100);
+                }
             }
+            attachStartButton();
         });
     </script>
 </body>
 </html>
+
