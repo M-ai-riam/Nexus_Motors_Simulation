@@ -972,7 +972,7 @@
                         <div class="decision-group">
                             <div class="decision-label">
                                 <label>R&D Investment<span class="what-if-icon">?<span class="what-if-tooltip">Invest more in R&D to improve EV product quality and innovation speed. Higher R&D increases customer satisfaction and market competitiveness.</span></span></label>
-                                <span class="decision-value">$<span id="rdValue">75</span>M</span>
+                                <span class="decision-value">$<span id="rdValue">10</span>M</span>
                             </div>
                             <input type="range" id="rdSlider" min="0" max="30" value="10" class="slider" oninput="updateDecision('rd', this.value)">
                         </div>
@@ -980,7 +980,7 @@
                         <div class="decision-group">
                             <div class="decision-label">
                                 <label>EV Marketing Budget<span class="what-if-icon">?<span class="what-if-tooltip">Allocate budget for EV brand promotion. More marketing increases customer awareness and demand for your EV models.</span></span></label>
-                                <span class="decision-value">$<span id="marketingValue">50</span>M</span>
+                                <span class="decision-value">$<span id="marketingValue">5</span>M</span>
                             </div>
                             <input type="range" id="marketingSlider" min="0" max="20" value="5" class="slider" oninput="updateDecision('marketing', this.value)">
                         </div>
@@ -988,7 +988,7 @@
                         <div class="decision-group">
                             <div class="decision-label">
                                 <label>Legacy Division Investment<span class="what-if-icon">?<span class="what-if-tooltip">Support your profitable combustion engine division. Lower investment may reduce their profitability but frees capital for EV growth.</span></span></label>
-                                <span class="decision-value">$<span id="legacyValue">50</span>M</span>
+                                <span class="decision-value">$<span id="legacyValue">5</span>M</span>
                             </div>
                             <input type="range" id="legacySlider" min="0" max="15" value="5" class="slider" oninput="updateDecision('legacy', this.value)">
                         </div>
@@ -1012,7 +1012,7 @@
                         <div class="decision-group" style="border-bottom: none;">
                             <div class="decision-label">
                                 <label>Circular Economy Investment<span class="what-if-icon">?<span class="what-if-tooltip">Invest in circular economy practices: recycling, battery recovery, sustainable materials. Reduces costs, increases brand value, and improves ESG score.</span></span></label>
-                                <span class="decision-value">$<span id="circularEconomyValue">30</span>M</span>
+                                <span class="decision-value">$<span id="circularEconomyValue">2</span>M</span>
                             </div>
                             <input type="range" id="circularEconomySlider" min="0" max="10" value="2" class="slider" oninput="updateDecision('circularEconomy', this.value)">
                         </div>
@@ -2549,12 +2549,12 @@
                     
                     // Reset sliders to default values for next round
                     gameState.decisions = {
-                        rd: 75,
-                        marketing: 50,
-                        legacy: 50,
+                        rd: 10,
+                        marketing: 5,
+                        legacy: 5,
                         volume: 25000,
                         price: 45000,
-                        circularEconomy: 30,
+                        circularEconomy: 2,
                         circularJustification: '',
                         capitalInvestment: 0,
                         mnaInvestment: 0
