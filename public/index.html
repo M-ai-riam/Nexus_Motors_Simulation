@@ -1813,7 +1813,12 @@
             // remove actual capital and M&A spending from cash separately so large investments drop balance
             const capInv = d.capitalInvestment || 0;
             const mnaInv = d.mnaInvestment || 0;
-            if (capInv + mnaInv > 0) {
+            const circularInv = d.circularEconomy || 0;
+            const rdInv = d.rd || 0;
+            const legacyInv = d.legacy || 0;
+            const marketingInv = d.marketing || 0;
+            let totalInvestments = capInv + mnaInv + circularInv + rdInv + legacyInv + marketingInv;
+            if (totalInvestments > 0) {
                 // before deduction: if the quarter produced no profit (netProfit <=0) and
                 // the balance would not fall, force it to drop by at least the investment
                 const prevCash = gameState.history.cashBalances[gameState.history.cashBalances.length - 1] || gameState.cashBalance;
@@ -1824,9 +1829,9 @@
                 }
                 gameState.cashBalance = newBalance;
                 console.log('Applied direct investment deduction', capInv, mnaInv, 'resulting cash', gameState.cashBalance);
-                // Deduct these investments from the team's budget immediately
+                // Deduct all investments from the team's budget immediately
                 // Investments sliders are in millions (M). Convert to dollars when deducting from plain-dollar budget.
-                const investDollarAmount = (capInv + mnaInv) * 1000000; // convert M -> $
+                const investDollarAmount = totalInvestments * 1000000; // convert M -> $
                 gameState.budget = Math.max(0, (gameState.budget || 0) - investDollarAmount);
                 if (!gameState.history.budgets) gameState.history.budgets = [];
                 gameState.history.budgets.push(gameState.budget);
