@@ -2602,6 +2602,22 @@
         document.addEventListener('DOMContentLoaded', function() {
             showInvestmentOptions();
             updateAllCharts();
+            // Auto-resume logic
+            const teamNameInput = document.getElementById('teamNameInput');
+            let lastTeam = '';
+            // Try to find a saved team in localStorage
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && key.startsWith('nexusmotors_')) {
+                    lastTeam = key.replace('nexusmotors_', '');
+                    break;
+                }
+            }
+            if (lastTeam && teamNameInput) {
+                teamNameInput.value = lastTeam;
+                // Optionally, you can auto-start the simulation here, or show a resume button
+                // For now, just pre-fill the name so the user can click Start Simulation
+            }
             const btn = document.getElementById('startButton');
             if (btn) {
                 btn.addEventListener('click', () => {
