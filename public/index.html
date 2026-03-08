@@ -2372,6 +2372,21 @@
         }
 
         function submitDecisions() {
+            // Calculate total investments for this quarter
+            const d = gameState.decisions;
+            const capInv = d.capitalInvestment || 0;
+            const mnaInv = d.mnaInvestment || 0;
+            const circularInv = d.circularEconomy || 0;
+            const rdInv = d.rd || 0;
+            const legacyInv = d.legacy || 0;
+            const marketingInv = d.marketing || 0;
+            let totalInvestments = capInv + mnaInv + circularInv + rdInv + legacyInv + marketingInv;
+            const investDollarAmount = totalInvestments * 1000000; // convert M -> $
+            const currentBudget = gameState.budget || 0;
+            if (investDollarAmount > currentBudget) {
+                alert('Your total investments exceed your available budget! Please reduce your investments to proceed.');
+                return;
+            }
             // Calculate quarter results
             calculateQuarterResults();
             proceedToJustifications();
