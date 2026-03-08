@@ -877,7 +877,10 @@
                 <p style="margin-top: 20px; color: #06b6d4; font-weight: bold;">Primary Goal: Maximize Profit & Market Share Growth</p>
                 <p>Make wise decisions about R&D investment, EV production, pricing, legacy support, and circular economy initiatives.</p>
                 
-                <div style="background: rgba(126,145,161,0.06); padding: 15px; border-radius: 8px; margin-top: 20px; border: 1px solid #7E91A1;">
+                                <p style="margin-top: 18px; color: #e5e7eb; background: rgba(30,40,60,0.13); border-left: 4px solid #7E91A1; padding: 12px 16px; border-radius: 7px; font-size: 1.05em;">
+                                    As a legacy automaker in 2026, your goal should be to exceed the EV share of traditional peers (like Toyota's 18.3% or GM's 19.6%) and aim for the level of committed transformers.
+                                </p>
+                                <div style="background: rgba(126,145,161,0.06); padding: 15px; border-radius: 8px; margin-top: 20px; border: 1px solid #7E91A1;">
                     <label style="display: block; margin-bottom: 10px; color: #E1E5EE; font-weight: bold;">Enter Your Team Name:</label>
                     <input type="text" id="teamNameInput" placeholder="e.g., Strategic Innovators" value="" style="width: 100%; padding: 10px; border: 1px solid #7E91A1; background: rgba(50, 50, 70, 0.8); color: #7E91A1; border-radius: 6px; font-size: 1em;">
                 </div>
@@ -1848,10 +1851,10 @@
             gameState.stockPrice = gameState.stockPrice * profitability * rdFactor * costEfficiency * (1 + growthFactor / 100) * (eventModifier / 1.0);
             gameState.stockPrice = Math.max(20, gameState.stockPrice); // Floor at $20
 
-            // Stock price threshold: if stock price exceeds $50, add $20,000 to budget
-            if (gameState.stockPrice > 50) {
-                gameState.budget = (gameState.budget || 0) + 20000;
-                console.log('Stock price exceeded $50. Added $20,000 to budget. New budget:', gameState.budget);
+            // Market share threshold: if market share reaches 10%, add $10,000 to budget
+            if (gameState.marketShare >= 10) {
+                gameState.budget = (gameState.budget || 0) + 10000;
+                console.log('Market share reached 10%. Added $10,000 to budget. New budget:', gameState.budget);
             }
 
             // Customer satisfaction (boosted by circular economy initiatives)
