@@ -2352,6 +2352,14 @@
                 return;
             }
             gameState.teamName = teamName;
+        // Try to load saved state for this team
+        if (loadGameState(teamName)) {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('gameScreen').classList.add('active');
+            updateInbox();
+            updateDashboard();
+            try { startTimer(); } catch (e) { console.error('Error starting timer', e); }
+        } else {
             document.getElementById('welcomeScreen').style.display = 'none';
             // start countdown timer
             try {
@@ -2360,6 +2368,7 @@
                 console.error('Error starting timer', e);
             }
             document.getElementById('financialOverviewModal').classList.add('active');
+        }
         }
 
         function closeFinancialOverview() {
@@ -2389,6 +2398,7 @@
             }
             // Calculate quarter results
             calculateQuarterResults();
+            saveGameState();
             proceedToJustifications();
         }
 
